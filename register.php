@@ -13,18 +13,18 @@
 <div class="top">
     <div class="container-mb">
         <div class="navbar navbar-primary">
-            <div class="navbar-brand"><a href="#">简约论坛</a></div>
+            <div class="navbar-brand"><a href="./index.php">简约论坛</a></div>
             <div>
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="#">个人主页</a></li>
-                    <li><a href="#">发帖</a></li>
+                    <li><a href="./index.php">个人主页</a></li>
+                    <li><a href="./publish.php">发帖</a></li>
                     <li><a href="#">我发表的</a></li>
                     <li><a href="#">回复</a></li>
                     <li><a href="#">通知</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">登录</a></li>
-                    <li><a href="#">注册</a></li>
+                    <li><a href="./login.php">登录</a></li>
+                    <li><a href="./register.html">注册</a></li>
                 </ul>
             </div>
         </div>

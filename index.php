@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,18 +15,37 @@
 <body>
 <div class="top ">
     <div class="navbar navbar-primary container-mb">
-        <div class="navbar-brand"><a href="#">简约论坛</a></div>
+        <div class="navbar-brand"><a href="./index.php">简约论坛</a></div>
         <div>
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#">个人主页</a></li>
-                <li><a href="#">发帖</a></li>
+                <li><a href="./index.php">个人主页</a></li>
+                <li><a href="./publish.php">发帖</a></li>
                 <li><a href="#">我发表的</a></li>
                 <li><a href="#">回复</a></li>
                 <li><a href="#">通知</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">登录</a></li>
-                <li><a href="#">注册</a></li>
+                <?php
+                    if(isset($_SESSION["logined"])){
+                        if($_SESSION["logined"]==1){
+                ?>
+                <li class="nav-user-portrait"><img class="img-circle" src="./img/pikachu.jpg" alt=""></li>
+                <li class="nav-user-name"><div>pikachu</div></li>
+                <li><a href="./exitControl.php">退出登陆</a></li>
+                <?php
+                    }else{
+                ?>
+                <li><a href="./login.php">登录</a></li>
+                <li><a href="./register.php">注册</a></li>
+                <?php
+                    }
+                }else{
+                ?>
+                <li><a href="./login.php">登录</a></li>
+                <li><a href="./register.php">注册</a></li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
      </div>
@@ -76,8 +98,29 @@
         <div class="main-right-container clearfix">
             <div class="right-nav  container-sm-right">
                 <div class="right-nav-top clearfix">
-                    <button class="btn btn-default col-md-6">登陆</button>
-                    <button class="btn btn-default col-md-6">注册</button>
+                    <?php
+                        if(isset($_SESSION["logined"])){
+                            if($_SESSION["logined"]==1){
+                    ?>
+                    <div class="user-portrait clearfix">
+                        <img class="img-thumbnail" src="./img/pikachu.jpg" alt="">
+                        <span class="user-name">pikachu</span>
+                    </div>
+                    <div class="user-desc">一只不知道干什么好的pikachu</div>
+                    <?php
+                        }else{
+                    ?>
+                    <a class="btn btn-default col-md-6" href="./login.php">登陆</a>
+                    <a class="btn btn-default col-md-6" href="./register.php">注册</a>
+                    <?php
+                        }
+                    }else{
+                    ?>
+                    <a class="btn btn-default col-md-6" href="./login.php">登陆</a>
+                    <a class="btn btn-default col-md-6" href="./register.php">注册</a>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">我的</a></li>

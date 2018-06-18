@@ -22,14 +22,15 @@
         while($row = $result->fetch_assoc()) {
             if($userid==$row["userid"]&&$password==$row["password"]){           
                 $_SESSION["logined"]=1;
-                header("Location:index.html");
+                $_SESSION["userid"]=$userid;
+                header("Location:./index.php");
             }else{
                 echo "验证失败";
-                $_SESSION["logined"]=0;
-                header("Location:login.php");
+                header("Location:./login.php?flag=1");
             }
         }
     } else {
+        header("Location:register.php");
         echo "0 结果";
     }
     $conn->close();

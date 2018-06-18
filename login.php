@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,18 +16,18 @@
 <div class="top">
     <div class="container-mb">
         <div class="navbar navbar-primary">
-            <div class="navbar-brand"><a href="#">简约论坛</a></div>
+            <div class="navbar-brand"><a href="./index.php">简约论坛</a></div>
             <div>
                 <ul class="nav navbar-nav navbar-left">
-                    <li><a href="#">个人主页</a></li>
-                    <li><a href="#">发帖</a></li>
+                    <li><a href="./index.php">个人主页</a></li>
+                    <li><a href="./publish.php">发帖</a></li>
                     <li><a href="#">我发表的</a></li>
                     <li><a href="#">回复</a></li>
                     <li><a href="#">通知</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">登录</a></li>
-                    <li><a href="#">注册</a></li>
+                    <li><a href="./login.php">登录</a></li>
+                    <li><a href="./register.php">注册</a></li>
                 </ul>
             </div>
         </div>
@@ -32,17 +35,19 @@
 </div>
 <div class="main">
     <div class="container container-sm">
-        <?php
-            session_start();
-            if(isset($_SESSION["logined"])){
-                if($_SESSION["logined"]==0){
+        <?php      
+            if(isset($_REQUEST["flag"])){
+                if($_REQUEST["flag"]==1){
         ?>
         <div class="alert alert-danger">登陆信息有误</div>     
         <?php
+            }if($_REQUEST["flag"]==2){
+        ?> 
+        <div class="alert alert-danger">您还未登陆</div> 
+        <?php       
             }
         }
-        ?>            
-       
+        ?>  
         <form action="loginControl.php" method="POST">
             <h1>欢迎来到简约论坛~</h1>
             <div class="form-group">
