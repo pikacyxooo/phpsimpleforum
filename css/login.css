@@ -1,0 +1,13 @@
+.alert-style{
+	margin-top: 5px;
+	display: block;
+	height: 30px;
+	padding: 0 15px;
+	line-height: 30px;
+	display: none;
+}
+.main{
+    padding-top: 150px;
+    height: 800px;
+    background-color: #fff;
+}

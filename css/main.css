@@ -1,0 +1,39 @@
+.container-mb{
+    width: 80%;
+    margin: 0 auto;
+}
+.container-sm-right{
+    width: 45%;
+    margin: 0 60px 0 0;
+}
+.container-bg{
+    width: 70%;
+    margin:0 auto;
+}
+.container-sm{
+    max-width: 25%;
+    margin: 0 auto;
+}
+.container-md{
+    max-width: 40%;
+    margin: 0 auto;
+}
+.top{   
+    height: 50px;
+    background-color:#f9f9f9;
+}
+.top .navbar-brand a{
+    text-decoration: none;
+}
+.main{
+    padding-top: 60px;
+    height: 800px;
+    background-color: #fafafa;
+}
+.main .main-h1{
+    text-align: center;
+}
+.bottom{
+    height: 150px;
+    background-color: #337ab7;
+}

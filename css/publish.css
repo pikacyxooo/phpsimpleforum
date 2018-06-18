@@ -1,0 +1,28 @@
+.container-bg{
+    width: 80%;
+    margin:0 auto;
+}
+.container-sm{
+    max-width: 25%;
+    margin: 0 auto;
+}
+.container-md{
+    max-width: 40%;
+    margin: 0 auto;
+}
+.top{
+    height: 50px;
+    background-color:#fafafa;
+}
+.top .navbar-brand a{
+    text-decoration: none;
+}
+.main{
+    padding-top: 150px;
+    height: 800px;
+    background-color: #fff;
+}
+.bottom{
+    height: 150px;
+    background-color: #337ab7;
+}
