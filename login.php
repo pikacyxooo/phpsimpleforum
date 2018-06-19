@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if(isset($_COOKIE["userid"])){
+        $cookie = $_COOKIE["userid"];
+    }
+    
 ?>
 <html lang="en">
 <head>
@@ -52,11 +56,14 @@
             <h1>欢迎来到简约论坛~</h1>
             <div class="form-group">
                 <label>用户名:</label>
-                <input type="text" name="userid" class="form-control">
+                <input type="text" name="userid" class="form-control" value=<?php if(isset($cookie))echo $cookie ?>>
             </div>
             <div class="form-group">
                 <label>密码:</label>
                 <input type="password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="checkBox" name="remember" value="1"/><span style="color:#777;" > 记住用户名</span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-block" value="登陆">
@@ -65,3 +72,6 @@
     </div>
 </div>
 <div class="bottom"></div>
+</body>
+<!-- <script src="./js/login.js"></script> -->
+</html>

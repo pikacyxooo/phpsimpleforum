@@ -19,7 +19,10 @@
         while($row = $result->fetch_assoc()) {
             if($userid==$row["userid"]&&$password==$row["password"]){           
                 $_SESSION["logined"]=1;
-                $_SESSION["userid"]=$userid;
+                $_SESSION["userid"]=$userid;          
+                if(isset($_POST["remember"])){
+                    setcookie("userid",$userid,time()+3600*6);//time()+600指600秒后cookie失效
+                }
                 header("Location:./index.php");
                 return;
             }             

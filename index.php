@@ -173,7 +173,7 @@
                         <img class="img-thumbnail" src="./img/nooo.jpg" alt=""><?php echo $article_list[$key]->getUserId(); ?>
                         <span class="text-muted item-anthor-desc"><?php echo $article_list[$key]->getUserDesc(); ?></span>
                     </div>
-                    <h3 class="item-title"><a href="#"><?php echo $article_list[$key]->getTitle(); ?></a></h3>
+                    <h3 class="item-title"><a href="./articleAct.php?articleid=<?php echo $article_list[$key]->getArticleId()?>"><?php echo $article_list[$key]->getTitle(); ?></a></h3>
                     <div class="item-desc">
                         <?php echo $article_list[$key]->getContent(); ?>
                     </div>
