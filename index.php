@@ -1,5 +1,79 @@
 <?php
     session_start();
+    $servername = "localhost";
+    $dbusername = "root";
+    $dbpassword = "123456";
+    $dbname = "simpleforum";
+    $article_list = array();
+    class Article{
+        var $userid;
+        var $userdesc;
+        var $articleId;
+        var $title;
+        var $content;
+        function __construct($id,$desc,$aid,$tie,$con){
+            $this->userid = $id;
+            $this->userdesc = $desc;
+            $this->articleId = $aid;
+            $this->title = $tie;
+            $this->content = $con;
+        }
+        function setUserId($par){
+            $this->userid = $par;
+        }
+        function getUserId(){
+            return $this->userid;
+        }
+        function getUserDesc(){
+            return $this->userdesc;
+        }
+        function setUserDesc($par){
+            $this->userdesc = $par;
+        }
+        function setTitle($par){
+            $this->title = $par;
+        }
+         
+        function getTitle(){
+            return $this->title;
+        }
+        function setContent($par){
+            $this->content = $par;
+        }
+         
+        function getContent(){
+            return $this->content;
+        }
+        function getArticleId(){
+            return $this->articleId;
+        }
+        function setArticleId($par){
+            $this->arctileId = $par;
+        }
+    }
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("连接失败: " . $conn->connect_error);
+    }
+    $conn->set_charset("utf8");
+    $sql = "select u.userid,u.userdesc,a.title,a.content,a.articleid from user as u inner join article as a on u.userid = a.userid;";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // 输出数据
+        while($row = $result->fetch_assoc()) {
+            // if($userid==$row["userid"]&&$password==$row["password"]){           
+            //     $_SESSION["logined"]=1;
+            //     $_SESSION["userid"]=$userid;
+            $articleid = $row["articleid"];
+            $userid = $row["userid"];
+            $userdesc = $row["userdesc"];
+            $title = $row["title"];
+            $content = $row["content"];
+            $article = new Article($userid,$userdesc,$articleid,$title,$content);
+            $article_list[$articleid] = $article;
+        }
+    }
 ?>
 <html lang="en">
 <head>
@@ -13,7 +87,7 @@
     <title>登录</title>
 </head>
 <body>
-<div class="top ">
+<div class="top clearfix">
     <div class="navbar navbar-primary container-mb">
         <div class="navbar-brand"><a href="./index.php">简约论坛</a></div>
         <div>
@@ -59,13 +133,13 @@
                     <li><a href="#">热门<span class="badge badge-success">50</span></a></li>
                 </ol>
             </div>
-            <div class="item-groups">
+            <div class="item-groups clearfix">
                 <div class="item-group">
                     <div class="item-anthor">
                         <img class="img-thumbnail" src="./img/pikachu.jpg" alt="">
                         野生皮卡出<span class="text-muted item-anthor-desc">一只不知道干什么好的pikachu</span>
                     </div>
-                    <h3 class="item-title"><a href="#">德国队输了,现在天台很冷</a></h3>
+                    <h3 class="item-title"><a href="./article.php">德国队输了,现在天台很冷</a></h3>
                     <div class="item-desc">
                             昨晚德国队输了,现在孩子老婆跑了,请问怎么办???!世界杯一到，天台就快站不下了。昨夜今晨刚刚结束的比赛日，卫冕冠军德国队被墨西哥1比0击败，夺冠大热巴西队被瑞士1比1逼平。而塞尔维亚则依靠着一记精彩任意球破门，1比0小胜哥斯达黎加。
                     </div>
@@ -91,6 +165,22 @@
                         请大家顺便标上省、市、县，交通情况和住宿情况，谢谢啦(๑╹◡╹)ﾉ✿
                     </div>
                 </div>
+                <?php
+                    foreach($article_list as $key=>$value){    
+                ?>
+                <div class="item-group">
+                    <div class="item-anthor">
+                        <img class="img-thumbnail" src="./img/nooo.jpg" alt=""><?php echo $article_list[$key]->getUserId(); ?>
+                        <span class="text-muted item-anthor-desc"><?php echo $article_list[$key]->getUserDesc(); ?></span>
+                    </div>
+                    <h3 class="item-title"><a href="#"><?php echo $article_list[$key]->getTitle(); ?></a></h3>
+                    <div class="item-desc">
+                        <?php echo $article_list[$key]->getContent(); ?>
+                    </div>
+                </div>
+                <?php       
+                    }
+                ?>
             </div>  
         </div>
     </div>

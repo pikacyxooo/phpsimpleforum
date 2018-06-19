@@ -33,6 +33,15 @@
 <div class="main">
     <div class="container container-sm">
         <h1>欢迎您注册简约论坛~</h1>
+        <?php      
+            if(isset($_REQUEST["flag"])){
+                if($_REQUEST["flag"]==1){
+        ?>
+        <div class="alert alert-danger">该账号还未注册
+        </div> 
+        <?php
+                }}
+        ?>
         <div class='alert alert-success alert-style submit-right'>注册成功~~</div>
         <form id="form-sign-up" action="./registerControl.php" method="post">
             <div class="form-group">

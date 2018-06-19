@@ -18,9 +18,12 @@ try {
     $conn->beginTransaction();
     // SQL 语句
     $conn->query("SET NAMES utf8");
-    $conn->exec("INSERT INTO article (userid,title, content) 
+    $code = rand(10000000, 99999999); 
+    $codeStr = (string)$code;
+    echo $codeStr;
+    $conn->exec("INSERT INTO article (userid,articleid,title,content) 
     -- userid,    '".$userid."',
-    VALUES ('".$userid."','".$title."','".$content."')");
+    VALUES ('".$userid."','".$codeStr."','".$title."','".$content."')");
     // 提交事务
     $conn->commit();
     echo "新记录插入成功";

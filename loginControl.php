@@ -2,15 +2,12 @@
     session_start();
     $userid = $_POST["userid"];
     $password = $_POST["password"];
-    echo $userid;
-    echo "<br>";
-    echo $password;
-    echo "<br>";    
     $servername = "localhost";
     $dbusername = "root";
     $dbpassword = "123456";
     $dbname = "simpleforum";
     $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+    $conn->set_charset("utf8");
     // Check connection
     if ($conn->connect_error) {
         die("连接失败: " . $conn->connect_error);
@@ -24,13 +21,13 @@
                 $_SESSION["logined"]=1;
                 $_SESSION["userid"]=$userid;
                 header("Location:./index.php");
-            }else{
-                echo "验证失败";
-                header("Location:./login.php?flag=1");
-            }
+                return;
+            }             
         }
-    } else {
-        header("Location:register.php");
+        echo "验证失败";
+        header("Location:./login.php?flag=1"); 
+    }else {
+        header("Location:register.php?flag=1");
         echo "0 结果";
     }
     $conn->close();

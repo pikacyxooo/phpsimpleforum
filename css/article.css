@@ -1,0 +1,26 @@
+.main-desc {
+	padding: 10px 5px;
+	font-size: 16px;
+	color: #666666;
+}
+
+.item-group {
+	position: relative;
+}
+
+.item-group .item-bottom {
+	position: absolute;
+	width: 100%;
+	top: 200px;
+	padding: 0px 20px;
+}
+
+.item-group .item-time {
+	position: absolute;
+	right: 20px;
+	color: #777;
+	top: 10px;
+}
+.item-groups .item-group .item-desc{
+	color: #666666;
+}
