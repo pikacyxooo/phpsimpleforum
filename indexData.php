@@ -1,9 +1,6 @@
 <?php
     session_start();
-    $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "123456";
-    $dbname = "simpleforum";
+    include("./config.php");
     $article_list = array();
     class Article{
         var $userid;
@@ -51,7 +48,7 @@
             $this->arctileId = $par;
         }
     }
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname,$port);
     // Check connection
     if ($conn->connect_error) {
         die("连接失败: " . $conn->connect_error);

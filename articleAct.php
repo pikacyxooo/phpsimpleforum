@@ -1,14 +1,11 @@
 <?php
     session_start();
     $articleid = $_REQUEST["articleid"];
-    $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "123456";
-    $dbname = "simpleforum";
+    include("./config.php");
     $userid = null;
     $title = null;
     $content = null;
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname,$port);
     // Check connection
     if ($conn->connect_error) {
         die("连接失败: " . $conn->connect_error);
@@ -213,16 +210,28 @@
 </body>
 <<script>
     // 点赞
+    var goodclick = false;
     $(".btn-good").click(function(){
-        var a = $(this).children("span").text();
-        a ++;
-        $(this).children("span").text(a);
+        if(goodclick){
+            alert("您已经点赞过了");
+        }else{
+            var a = $(this).children("span").text();
+            a ++;
+            $(this).children("span").text(a);
+            goodclick = true;
+        }  
     })
     // 踩
+    var badclick = false;
     $(".btn-bad").click(function(){
-        var b = $(this).children("span").text();
-        b ++;
-        $(this).children("span").text(b);
+        if(badclick){
+            alert("您已经踩过了");
+        }else{
+            var b = $(this).children("span").text();
+            b ++;
+            $(this).children("span").text(b);
+            badclick = true;
+        }  
     })
 </script>
 </html>

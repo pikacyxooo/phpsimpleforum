@@ -57,8 +57,8 @@
             <div class="container-bg pull-right">
                 <div class="main-nav">
                     <ol class="breadcrumb">
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">热门<!-- <span class="badge badge-success">50</span> --></a></li>
+                        <li><a href="./index.php">HOME</a></li>
+                        <li><a href="./index.php">热门<!-- <span class="badge badge-success">50</span> --></a></li>
                         <li style="color: #ddd">德国队输了,现在天台很冷</li>
                     </ol>
                 </div>

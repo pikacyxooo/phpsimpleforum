@@ -2,11 +2,8 @@
     session_start();
     $userid = $_POST["userid"];
     $password = $_POST["password"];
-    $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "123456";
-    $dbname = "simpleforum";
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+    include("./config.php");
+    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname,$port);
     $conn->set_charset("utf8");
     // Check connection
     if ($conn->connect_error) {

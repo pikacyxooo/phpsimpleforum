@@ -1,8 +1,5 @@
 <?php
-$servername = "localhost";
-$dbusername = "root";
-$dbpassword = "123456";
-$dbname = "simpleforum";
+include("./config.php");
 $userid = $_POST["userid"];
 $email = $_POST["email"];
 $pass = $_POST["password"];
@@ -11,7 +8,7 @@ echo $email;
 echo $pass;
 // 创建连接
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+    $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $dbusername, $dbpassword);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "链接成功";

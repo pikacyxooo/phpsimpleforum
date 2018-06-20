@@ -1,15 +1,12 @@
 <?php
 session_start();
-$servername = "localhost";
-$dbusername = "root";
-$dbpassword = "123456";
-$dbname = "simpleforum";
+include("./config.php");
 $userid = $_SESSION["userid"];
 $title = $_POST["title"];
 $content = $_POST["content"];
 // 创建连接
 try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $dbusername, $dbpassword);
+    $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $dbusername, $dbpassword);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "链接成功";
